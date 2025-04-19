@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ユーザー一覧</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #1a73e8;
+            color: white;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .btn:hover {
+            background-color: #0d62c9;
+            text-decoration: none;
+        }
+        .delete-link {
+            color: #d93025;
+        }
+    </style>
+</head>
+<body>
+    <h1>ユーザー一覧</h1>
+    
+    <a th:href="@{/users/new}" class="btn">新規ユーザー追加</a>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>名前</th>
+                <th>メール</th>
+                <th>アクション</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}">1</td>
+                <td th:text="${user.name}">名前</td>
+                <td th:text="${user.email}">メール</td>
+                <td>
+                    <a th:href="@{/users/{id}(id=${user.id})}">詳細</a> | 
+                    <a th:href="@{/users/{id}/edit(id=${user.id})}">編集</a> | 
+                    <a th:href="@{/users/{id}/delete(id=${user.id})}" class="delete-link" 
+                       onclick="return confirm('削除してもよろしいですか？');">削除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

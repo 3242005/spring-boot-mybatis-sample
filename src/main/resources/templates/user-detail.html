@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ユーザー詳細</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .user-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #1a73e8;
+            color: white;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .btn:hover {
+            background-color: #0d62c9;
+            text-decoration: none;
+        }
+        .delete-btn {
+            background-color: #d93025;
+        }
+        .delete-btn:hover {
+            background-color: #b7271e;
+        }
+    </style>
+</head>
+<body>
+    <h1>ユーザー詳細</h1>
+    
+    <div class="user-info">
+        <p><span class="label">ID:</span> <span th:text="${user.id}">1</span></p>
+        <p><span class="label">名前:</span> <span th:text="${user.name}">名前</span></p>
+        <p><span class="label">メール:</span> <span th:text="${user.email}">メール</span></p>
+    </div>
+    
+    <a th:href="@{/users/{id}/edit(id=${user.id})}" class="btn">編集</a>
+    <a th:href="@{/users/{id}/delete(id=${user.id})}" class="btn delete-btn" 
+       onclick="return confirm('削除してもよろしいですか？');">削除</a>
+    <a th:href="@{/users}" class="btn" style="background-color: #888;">一覧に戻る</a>
+</body>
+</html>

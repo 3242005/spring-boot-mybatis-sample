@@ -1,0 +1,17 @@
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- 設定 -->
+  <settings>
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+    <setting name="defaultStatementTimeout" value="30"/>
+    <setting name="defaultFetchSize" value="100"/>
+    <setting name="logImpl" value="LOG4J2"/>
+  </settings>
+  
+  <!-- エイリアス設定 -->
+  <typeAliases>
+    <package name="com.example.my_spring_app.web.model"/>
+  </typeAliases>
+</configuration>
