@@ -73,8 +73,12 @@
                 <td>
                     <a th:href="@{/users/{id}(id=${user.id})}">詳細</a> | 
                     <a th:href="@{/users/{id}/edit(id=${user.id})}">編集</a> | 
-                    <a th:href="@{/users/{id}/delete(id=${user.id})}" class="delete-link" 
-                       onclick="return confirm('削除してもよろしいですか？');">削除</a>
+                    <form th:action="@{/users/{id}(id=${user.id})}" method="post" style="display:inline;">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" class="delete-link" 
+            onclick="return confirm('削除してもよろしいですか？');"
+            style="background:none;border:none;color:#d93025;cursor:pointer;">削除</button>
+</form>
                 </td>
             </tr>
         </tbody>
